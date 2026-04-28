@@ -1,27 +1,30 @@
-import Button from "../Button/Button";
-import { CounterWrapper, ButtonWrapper, Result } from "./styles";
+import Button from "../Button/Button"
+import { CounterWrapper, ButtonWrapper, Result } from "./styles"
 // 9. Импортируем хуки для диспатча и получения данных
-import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks"
 // 10. Импортируем экшены селексторы из файла со слайсом
-import { counterActions, counterSelectors } from "../../redux/slices/counter/counterSlice";
+import {
+  counterActions,
+  counterSelectors,
+} from "../../redux/slices/counter/counterSlice"
 
 function Counter() {
   // 11. Получаем функцию dispatch
-  const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch()
 
   // 12. Забираем значение из глобального стейта
-  const counter = useAppSelector(counterSelectors.counterValue);
+  const counter = useAppSelector(counterSelectors.counterValue)
 
   const onCounterMinus = (): void => {
     dispatch(counterActions.minus())
-  };
+  }
   const onCounterPlus = (): void => {
     dispatch(counterActions.plus())
-  };
+  }
 
-  // const onCounterClear = (): void => {
-  //   setCounter(0);
-  // };
+  const onCounterClear = (): void => {
+    dispatch(counterActions.reset())
+  }
 
   return (
     <CounterWrapper>
@@ -32,11 +35,11 @@ function Counter() {
       <ButtonWrapper>
         <Button name="+" onButtonClick={onCounterPlus} />
       </ButtonWrapper>
-      {/* <ButtonWrapper>
+      <ButtonWrapper>
         <Button name="Clear" onButtonClick={onCounterClear} />
-      </ButtonWrapper> */}
+      </ButtonWrapper>
     </CounterWrapper>
-  );
+  )
 }
 
-export default Counter;
+export default Counter

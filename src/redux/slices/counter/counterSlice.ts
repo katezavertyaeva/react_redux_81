@@ -24,6 +24,7 @@ export const counterSlice = createAppSlice({
     minus: create.reducer((state: CounterState) => {
       state.count = state.count - 1
     }),
+    reset: create.reducer(() => counterInitialState),
   }),
   //  6. Создаём селекторы, которые позволяют забрать данные из стейта в компонент
   selectors: {
@@ -32,5 +33,5 @@ export const counterSlice = createAppSlice({
 })
 
 // 7. Экспорт экшенов и селекторов для удобства их использования в компоненте
-export const counterActions = counterSlice.actions;
-export const counterSelectors = counterSlice.selectors;
+export const counterActions = counterSlice.actions
+export const counterSelectors = counterSlice.selectors
